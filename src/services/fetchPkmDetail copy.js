@@ -1,7 +1,8 @@
 
-const fetchPkmDetail = (id) => {
+const fetchPkmDetail = (url) => {
+  // const pkm = pkmList[i].url;
 
-  return fetch("https://pokeapi.co/api/v2/pokemon/" + id)
+  return fetch(url)
   .then((response) => response.json())
   .then((data) => {    
 
@@ -29,12 +30,12 @@ const fetchPkmDetail = (id) => {
       types: types,
       weight: data.weight / 10,
       stats: stats
+      stats: stats
     }
 
     return pkmInfo
 
-  })
-  .catch(err => {console.error('Request failed', err)})
+  });
 };
 
 export default fetchPkmDetail

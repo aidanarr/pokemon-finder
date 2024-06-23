@@ -30,18 +30,25 @@ function App() {
   const [pkmDetail, setPkmDetail] = useState({})
 
   // fetch pkm list
-  useEffect(() => {
-    fetchPkmData().then((data) => setPkmList(data[0]));
-    fetchPkmData().then((data) => setfetchInfo(data[1]))
-  }, [])
+  // useEffect(() => {
+  //   fetchPkmData().then((data) => setPkmList(data[0]));
+  //   fetchPkmData().then((data) => setfetchInfo(data[1]))
+  // }, [])
 
   useEffect(() => {
-    try {
-      fetchPkmDetail(pkmList[0].url).then((data) => setPkmDetail(data))
-    } catch {
-      null
-    }
-  }, [pkmList])
+    fetchPkmData(1).then((data) => setPkmList(data));
+  }, [])
+
+  // useEffect(() => {
+  //   try {
+  //     const split = pkmList[3].url.split("/");
+  //     const pkmId = split[6];
+  //     console.log(split)
+  //     fetchPkmDetail(pkmId).then((data) => setPkmDetail(data))
+  //   } catch {
+  //     null
+  //   }
+  // }, [pkmList])
 
   
 
