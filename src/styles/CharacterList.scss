@@ -1,0 +1,22 @@
+.list-box {
+   width: 100%;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+   justify-items: center;
+   gap: 40px;
+   padding: 40px;
+   padding-left: 60px;
+   padding-right: 60px;
+
+   @media (width < 968px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+   }
+
+   @media (width < 769px) {
+    grid-template-columns: 1fr 1fr 1fr;
+   }
+
+   @media (width < 480px) {
+    grid-template-columns: 1fr;
+   }
+}

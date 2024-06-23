@@ -1,0 +1,50 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
+    font-family:'Segoe UI', sans-serif;
+ }
+
+ .main {
+  min-height: 70vh;
+  background-color: black;
+  padding: 40px;
+  padding-top: 20px;
+ }
+
+.form {
+  width: 100%;
+  padding-left: 60px;
+  padding-right: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: white;
+
+  &__select {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    @media (width < 769px) {
+      width: 80%;
+  }
+
+  @media (width < 480px) {
+    flex-direction: column;
+    gap: 10px;
+   }
+  }
+}
+
+.no-chara {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 200;
+}

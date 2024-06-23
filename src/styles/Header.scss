@@ -1,0 +1,16 @@
+.header {
+    height: 30vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+
+    &__logo {
+        width: 600px;
+        background-image: url(../images/title.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        
+    }
+}
+
