@@ -5,6 +5,8 @@ import CharacterList from "./CharacterList.jsx"
 import CharacterDetail from "./CharacterDetail.jsx"
 import { useState, useEffect } from "react";
 import fetchData from "../services/fetchData.js";
+import fetchPkmData from "../services/fetchPkmData.js";
+import fetchPkmDetail from "../services/fetchPkmDetail.js";
 import NotFound from "./NotFound.jsx";
 import FilterStatus from "./FilterStatus.jsx";
 import FilterSpecies from "./FilterSpecies.jsx";
@@ -19,11 +21,34 @@ function App() {
   const [valueStatus, setValueStatus] = useState("");
   const [valueSpecies, setValueSpecies] = useState("");
 
+  // POKEMON
+  // pkm name and details url
+  const [pkmList, setPkmList] = useState([]);
+  // next/previous 20 entries
+  const [fetchInfo, setfetchInfo] = useState({});
+
+  const [pkmDetail, setPkmDetail] = useState({})
+
+  // fetch pkm list
+  useEffect(() => {
+    fetchPkmData().then((data) => setPkmList(data[0]));
+    fetchPkmData().then((data) => setfetchInfo(data[1]))
+  }, [])
+
+  useEffect(() => {
+    try {
+      fetchPkmDetail(pkmList[0].url).then((data) => setPkmDetail(data))
+    } catch {
+      null
+    }
+  }, [pkmList])
+
+  
+
   // useEffect para sacar los datos del fetch y meterlos en la variable de estado al cargar la página
   useEffect(() => {
     fetchData().then((data) => setCharaList(data));
   }, []);
-
 
   // Variable que guarda el array aplicando los distintos filtros
   const filterCharas = charaList.filter((chara) => valueInput ? chara.name.toLowerCase().includes(valueInput.toLowerCase()) : true).filter((chara) => valueStatus ? valueStatus === chara.status : true).filter((chara) => valueSpecies ? valueSpecies === chara.species : true)
