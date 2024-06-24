@@ -1,3 +1,4 @@
+
 import "../styles/App.scss"
 import { Route, Routes } from "react-router-dom";
 import Filters from "./Filters.jsx"
@@ -11,6 +12,7 @@ import NotFound from "./NotFound.jsx";
 import FilterStatus from "./FilterStatus.jsx";
 import FilterSpecies from "./FilterSpecies.jsx";
 import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 
 function App() {
 
@@ -68,6 +70,7 @@ function App() {
       {/* Nos renderiza el texto de error en la búsqueda si el array del filtro está vacío */}
       {filterPkm.length === 0 ? <div className="no-chara"><p>{noCharaMsg}</p></div> : null}
     </main>
+    <Footer />
     </>
   )
 }

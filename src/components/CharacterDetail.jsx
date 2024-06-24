@@ -34,6 +34,7 @@ export const CharacterDetail = ({getPkmData}) => {
           </div>
           <div className="detail__card--info">
             <p className="card-name">{data.name}</p>
+            <p>Pokédex entry: {data.pokedex}</p>
             <p>Type(s): {data.types[0]}{data.types[1] ? ", " + data.types[1] : false}</p>
             <p>Abilities: {data.abilities[0]}
               {data.abilities[1] ? ", " + data.abilities[1] : false}

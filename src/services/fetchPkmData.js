@@ -50,7 +50,8 @@ const fetchPkmData = (generation) => {
       imgShiny: data.sprites.front_shiny,
       types: types,
       weight: data.weight / 10,
-      stats: stats
+      stats: stats,
+      pokedex: data.order
     }
 
     return pkmInfo

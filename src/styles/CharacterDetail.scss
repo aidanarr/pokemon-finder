@@ -6,8 +6,8 @@
     &__card {
         width: 600px;
         font-weight: 200;
-        background-color: #4d4d4d;
-        color: white;
+        background-color: white;
+        color: palevioletred;
         display: flex;
 
         @media (width < 769px) {

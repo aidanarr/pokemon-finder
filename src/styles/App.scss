@@ -1,15 +1,19 @@
+@import "var";
+
  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     color: inherit;
-    font-family:'Segoe UI', sans-serif;
+    font-family: "ＭＳ Ｐゴシック", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
  }
 
  .main {
-  min-height: 70vh;
-  background-color: black;
+  min-height: 55vh;
+  background-color: $light-grey;
   padding: 40px;
   padding-top: 20px;
  }
@@ -45,6 +49,6 @@
 .no-chara {
   display: flex;
   justify-content: center;
-  color: white;
+  color: black;
   font-weight: 200;
 }

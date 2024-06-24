@@ -1,6 +1,6 @@
 .notfound {
     padding-top: 40px;
-    color: white;
+    color: black;
     font-weight: 200;
     display: flex;
     flex-direction: column;
@@ -8,11 +8,11 @@
     gap: 10px;
 
     &__return {
-        color: #10AEC6;
+        color: palevioletred;
         font-weight: normal;
 
         &:hover {
-            color: #9EF77B;
+            color: rgb(7, 192, 225);
         }
     }
 }
