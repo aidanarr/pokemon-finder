@@ -37,13 +37,11 @@ function App() {
 
   // Variable que guarda el array aplicando los distintos filtros
   const filterPkm = pkmList.filter((pkm) => valueInput ? pkm.name.toLowerCase().includes(valueInput.toLowerCase()) : true).filter((pkm) => valueType ? pkm.types.includes(valueType) : true)
-  // .filter((chara) => valueStatus ? valueStatus === chara.status : true)
-
   
-  const getCharaData = (parameter) => {
+  const getPkmData = (parameter) => {
     // Buscamos el personaje que coincida dentro del array original para utilizarlo en el componente Detail
-    const clickedChara = charaList.find((chara) => chara.id === parseInt(parameter));
-    return clickedChara
+    const clickedPkm = pkmList.find((pkm) => pkm.id === parseInt(parameter));
+    return clickedPkm
   }
 
 
@@ -64,7 +62,7 @@ function App() {
             <CharacterList pkmList={filterPkm}/>
           </>
         }/>
-        <Route path="/detail/:id" element={<CharacterDetail getCharaData={getCharaData} />}/>
+        <Route path="/detail/:id" element={<CharacterDetail getPkmData={getPkmData} />}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* Nos renderiza el texto de error en la búsqueda si el array del filtro está vacío */}
