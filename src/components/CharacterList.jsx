@@ -2,23 +2,23 @@ import CharacterCard from "./CharacterCard"
 import "../styles/CharacterList.scss"
 import PropTypes from "prop-types";
 
-export const CharacterList = (props) => {
+export const CharacterList = ({ pkmList }) => {
 
-  // Ordenamos el array alfabeticamente
+  // sort by id (descending)
 
-  props.filterCharas.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+  pkmList.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
 
-    // Map que renderiza el componente CharacterCard con cada elemento del array de personajes
+    // map to render a card with each pokemon of the array
 
   return (
     <section className="list-box">
-      {props.filterCharas.map((chara) => <CharacterCard key={chara.id} chara={chara} />)}
+      {pkmList.map((chara) => <CharacterCard key={chara.id} chara={chara} />)}
     </section>
   )
 }
 
 CharacterList.propTypes = {
-  filterCharas: PropTypes.array,
+  pkmList: PropTypes.array,
 };
 
 export default CharacterList

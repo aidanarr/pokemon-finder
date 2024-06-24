@@ -6,10 +6,8 @@ export const Filters = (props) => {
   const handleChange = (ev) => {
     const value = ev.target.value;
 
-    // Ejecutamos la función para filtrar personajes
-
-    // Ejecutamos la función para establecer el mensaje de error en el buscador
-    props.setNoCharaMsg(`No existe ningún personaje llamado ` + value);
+    // Set message if there's no pkm
+    props.setNoCharaMsg(`Huh, there's no Pokémon called ` + value + `.`);
     
     props.setValueInput(value);
   }

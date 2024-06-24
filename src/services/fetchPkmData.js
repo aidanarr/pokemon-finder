@@ -41,11 +41,12 @@ const fetchPkmData = (generation) => {
       }
     });
 
+    // final object
     const pkmInfo = {
       id: data.id,
       name: data.name,
       abilities: abilities,
-      img: data.sprites.front_default,
+      image: data.sprites.front_default,
       imgShiny: data.sprites.front_shiny,
       types: types,
       weight: data.weight / 10,

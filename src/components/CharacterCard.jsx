@@ -10,7 +10,6 @@ export const CharacterCard = ({chara}) => {
       <article className="card">
         <img src={chara.image} />
         <p className="card__name">{chara.name}</p>
-        <p className="card__details">{chara.species}{chara.status === "Dead" ? " 💀" : null}</p>
       </article>
     </Link>
 
