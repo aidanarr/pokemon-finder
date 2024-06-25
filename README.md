@@ -1,4 +1,4 @@
-# POKÉMON FINDER ![Pokéball icon](/public/pokeball.png)
+# Pokémon Finder ![Pokéball icon](/public/pokeball.png)
 
 Welcome to **Pokémon Finder**. Here you can find a list of all pokémon from every generation (excluding regional forms for now).
 

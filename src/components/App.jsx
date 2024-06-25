@@ -31,6 +31,11 @@ function App() {
       setPkmList(data)});
   }, [generation])
 
+  useEffect(() => {
+    const localGen = localStorage.getItem("gen");
+    localGen ? setGeneration(localGen) : false;
+  }, [])
+
   // Array using pkmList applying filters
   const filterPkm = pkmList.filter((pkm) => valueInput ? pkm.name.toLowerCase().includes(valueInput.toLowerCase()) : true).filter((pkm) => valueType ? pkm.types.includes(valueType) : true)
   

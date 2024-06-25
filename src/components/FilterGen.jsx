@@ -6,6 +6,8 @@ const FilterGen = (props) => {
     const handleChange = (ev) => {
         const value = ev.target.value;
         props.setGeneration(parseInt(value));
+        localStorage.clear();
+        localStorage.setItem("gen", parseInt(value));
     }
 
   return (

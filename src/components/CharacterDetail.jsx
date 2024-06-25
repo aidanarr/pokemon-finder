@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
 import "../styles/CharacterDetail.scss"
 import PropTypes from "prop-types";
+import NotFound from "./NotFound";
 
 export const CharacterDetail = ({getPkmData}) => {
 
@@ -73,9 +74,7 @@ export const CharacterDetail = ({getPkmData}) => {
               <p className="return__box--text">← Back</p>
             </div>
           </Link>
-        </> : <><div className="loader-box detail-page">
-            <div className="loader-list"></div>
-          </div></>}
+        </> : <NotFound /> }
     </>
     
   )
