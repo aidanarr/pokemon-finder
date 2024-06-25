@@ -4,7 +4,7 @@ import "../styles/CharacterDetail.scss"
 import PropTypes from "prop-types";
 import NotFound from "./NotFound";
 
-export const CharacterDetail = ({getPkmData}) => {
+export const CharacterDetail = ({getPkmData, loader}) => {
 
   // Find pkm id with useParams
   const {id} = useParams();
@@ -26,6 +26,16 @@ export const CharacterDetail = ({getPkmData}) => {
     })
 
     return statList
+  }
+
+  const renderNotFound = () => {
+    if (loader) {
+      return <div className="loader-box detail-page">
+       <div className="loader-list"></div>
+      </div>
+    } else {
+      return <NotFound />
+    }
   }
 
 
@@ -74,7 +84,7 @@ export const CharacterDetail = ({getPkmData}) => {
               <p className="return__box--text">← Back</p>
             </div>
           </Link>
-        </> : <NotFound /> }
+        </> : renderNotFound() }
     </>
     
   )
@@ -82,6 +92,7 @@ export const CharacterDetail = ({getPkmData}) => {
 
 CharacterDetail.propTypes = {
   getPkmData: PropTypes.func,
+  loader: PropTypes.bool,
 };
 
 export default CharacterDetail

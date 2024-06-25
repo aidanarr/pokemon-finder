@@ -25,16 +25,19 @@ function App() {
   // pkm name and details url
   const [pkmList, setPkmList] = useState([]);
 
-  useEffect(() => {
-    fetchPkmData(generation).then(!loader ? setLoader(true) : false).then((data) => {
-      setLoader(false);
-      setPkmList(data)});
-  }, [generation])
+  // useEffect(() => {
+  //   fetchPkmData(generation).then(!loader ? setLoader(true) : false).then((data) => {
+  //     setLoader(false);
+  //     setPkmList(data)});
+  // }, [generation])
 
   useEffect(() => {
     const localGen = localStorage.getItem("gen");
     localGen ? setGeneration(localGen) : false;
-  }, [])
+    fetchPkmData(generation).then(!loader ? setLoader(true) : false).then((data) => {
+      setLoader(false);
+      setPkmList(data)});
+  }, [generation])
 
   // Array using pkmList applying filters
   const filterPkm = pkmList.filter((pkm) => valueInput ? pkm.name.toLowerCase().includes(valueInput.toLowerCase()) : true).filter((pkm) => valueType ? pkm.types.includes(valueType) : true)
@@ -63,7 +66,7 @@ function App() {
             <CharacterList loader={loader} pkmList={filterPkm}/>
           </>
         }/>
-        <Route path="/detail/:id" element={<CharacterDetail getPkmData={getPkmData} />}/>
+        <Route path="/detail/:id" element={<CharacterDetail loader={loader} getPkmData={getPkmData} />}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* Render error text */}
