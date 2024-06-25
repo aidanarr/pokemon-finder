@@ -47,6 +47,10 @@
     justify-content: center;
     gap: 20px;
 
+    @media (width < 903px) {
+      width: 50%;
+    }
+
     @media (width < 769px) {
       width: 80%;
   }
