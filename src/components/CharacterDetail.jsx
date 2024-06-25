@@ -1,15 +1,14 @@
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
-import NotFound from "./NotFound";
 import "../styles/CharacterDetail.scss"
 import PropTypes from "prop-types";
 
 export const CharacterDetail = ({getPkmData}) => {
 
-  // Con useParams averiguamos el name del personaje de la ruta dinámica
+  // Find pkm id with useParams
   const {id} = useParams();
 
-  // Guardamos los datos del personaje en una variable usando la función getPkmData
+  // save pkm data
   const data = getPkmData(id);
 
   const renderStatName = (data) => {
@@ -87,5 +86,3 @@ CharacterDetail.propTypes = {
 };
 
 export default CharacterDetail
-
-/*  */

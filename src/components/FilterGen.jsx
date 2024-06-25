@@ -1,7 +1,7 @@
 import "../styles/Filters.scss"
 import PropTypes from "prop-types";
 
-const FilterStatus = (props) => {
+const FilterGen = (props) => {
 
     const handleChange = (ev) => {
         const value = ev.target.value;
@@ -25,9 +25,9 @@ const FilterStatus = (props) => {
   )
 }
 
-FilterStatus.propTypes = {
+FilterGen.propTypes = {
   generation: PropTypes.number,
   setGeneration: PropTypes.func,
 };
 
-export default FilterStatus
+export default FilterGen

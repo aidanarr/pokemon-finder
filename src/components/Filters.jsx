@@ -6,12 +6,13 @@ export const Filters = (props) => {
   const handleChange = (ev) => {
     const value = ev.target.value;
 
-    // Set message if there's no pkm
+    // set message if there's no pkm
     props.setNoCharaMsg(`Huh, there's no Pokémon called ` + value + `.`);
     
     props.setValueInput(value);
   }
 
+  // avoid reload with enter
   const handleKeyDown = (ev) => {
     if (ev.key === "Enter") {
       ev.preventDefault();

@@ -5,10 +5,7 @@ import PropTypes from "prop-types";
 export const CharacterList = ({ pkmList, loader }) => {
 
   // sort by id (descending)
-
   pkmList.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
-
-    // map to render a card with each pokemon of the array
 
   return (
     <>

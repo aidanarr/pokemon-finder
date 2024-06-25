@@ -1,7 +1,7 @@
 import "../styles/Filters.scss"
 import PropTypes from "prop-types";
 
-const FilterSpecies = (props) => {
+const FilterType = (props) => {
 
   const handleChange = (ev) => {
       const value = ev.target.value;
@@ -30,10 +30,10 @@ const FilterSpecies = (props) => {
   )
 }
 
-FilterSpecies.propTypes = {
+FilterType.propTypes = {
   valueType: PropTypes.string,
   setValueType: PropTypes.func,
   pkmList: PropTypes.array,
 };
 
-export default FilterSpecies
+export default FilterType
