@@ -19,9 +19,9 @@ const FilterSpecies = (props) => {
   console.log(typesArray)
 
   return (
-     <label className="select" htmlFor="species">Type: 
+     <label className="select type" htmlFor="species">type: 
         <select className="select__box" name="species" id="species" value={props.valueType} onChange={handleChange}>
-          <option value="">Choose one</option>
+          <option value="">choose</option>
           {typesArray.map((type, i) => {
             return <option key={i} value={type}>{type}</option>
             })}

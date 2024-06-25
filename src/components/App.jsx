@@ -7,7 +7,6 @@ import CharacterDetail from "./CharacterDetail.jsx"
 import { useState, useEffect } from "react";
 import fetchData from "../services/fetchData.js";
 import fetchPkmData from "../services/fetchPkmData.js";
-import fetchPkmDetail from "../services/fetchPkmDetail.js";
 import NotFound from "./NotFound.jsx";
 import FilterStatus from "./FilterStatus.jsx";
 import FilterSpecies from "./FilterSpecies.jsx";
@@ -17,7 +16,7 @@ import Footer from "./Footer.jsx";
 function App() {
 
 
-  const [charaList, setCharaList] = useState([]);
+  const [loader, setLoader] = useState(true);
   const [noCharaMsg, setNoCharaMsg] = useState(null);
   const [valueInput, setValueInput] = useState("");
   const [valueType, setValueType] = useState("");
@@ -28,7 +27,9 @@ function App() {
   const [pkmList, setPkmList] = useState([]);
 
   useEffect(() => {
-    fetchPkmData(generation).then((data) => setPkmList(data));
+    fetchPkmData(generation).then(!loader ? setLoader(true) : false).then((data) => {
+      setLoader(false);
+      setPkmList(data)});
   }, [generation])
 
 
@@ -61,7 +62,7 @@ function App() {
                 <FilterSpecies pkmList={pkmList} valueType={valueType} setValueType={setValueType} />
               </div>
             </form>
-            <CharacterList pkmList={filterPkm}/>
+            <CharacterList loader={loader} pkmList={filterPkm}/>
           </>
         }/>
         <Route path="/detail/:id" element={<CharacterDetail getPkmData={getPkmData} />}/>

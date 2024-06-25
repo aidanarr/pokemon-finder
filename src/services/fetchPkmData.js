@@ -57,7 +57,7 @@ const fetchPkmData = (generation) => {
     return pkmInfo
     })
     
-    console.log(pkmArrayClean)
+    
     return pkmArrayClean
 
   }).catch(err => {console.error('Request failed', err)})

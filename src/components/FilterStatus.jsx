@@ -9,7 +9,7 @@ const FilterStatus = (props) => {
     }
 
   return (
-     <label className="select" htmlFor="status">Generation: 
+     <label className="select gen" htmlFor="status">gen: 
         <select className="select__box" name="status" id="status" value={props.generation} onChange={handleChange}>
           <option value="1">1</option>
           <option value="2">2</option>

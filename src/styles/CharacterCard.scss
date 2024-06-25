@@ -14,13 +14,18 @@
     padding: 20px;
     border-radius: 10px;
     color: black;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.082);
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.082);
     transition: width 0.5s, color 0.5s, background-color 0.5s;
 
     &:hover {
         width: 100%;
         color: palevioletred;
         background-color: white;
+        box-shadow: 0px 3px 3px rgba(216, 112, 147, 0.138);
+        img {
+            transition: filter 0.5s;
+            filter: drop-shadow(8px 5px 0px rgb(205, 205, 205));
+          }
     }
     
     img {

@@ -4,7 +4,7 @@
    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
    justify-items: center;
    gap: 40px;
-   padding-top: 60px;
+   padding-top: 30px;
    padding-left: 60px;
    padding-right: 60px;
    padding-bottom: 40px;
@@ -21,3 +21,28 @@
     grid-template-columns: 1fr 1fr;
    }
 }
+
+.loader-box {
+   padding-top: 20px;
+   width: 100%;
+   height: 30px;
+   display: flex;
+   justify-content: center;
+ }
+
+ .loader-list {
+   border: 6px dotted palevioletred;
+   border-radius: 50%;
+   width: 30px;
+   height: 30px;
+   animation: spin 2s linear infinite;
+ }
+ 
+ @keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+ }
+ 
+ .hidden {
+   display: none;
+ }
