@@ -9,6 +9,12 @@
     color: black;
     background-color: rgb(246, 246, 246);
 
+    @media (width < 480px) {
+        text-align: center;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
     a {
         color: palevioletred;
         font-weight: 500;

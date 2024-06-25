@@ -14,8 +14,20 @@
  .main {
   min-height: 55vh;
   background-color: $light-grey;
-  padding: 40px;
+  padding-left: 200px;
+  padding-right: 200px;
   padding-top: 20px;
+  padding-bottom: 20px;
+
+  @media (width < 1269px) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  @media (width < 769px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
  }
 
 .form {
@@ -44,6 +56,11 @@
     gap: 10px;
    }
   }
+
+  @media (width < 480px) {
+    padding-left: 20px;
+    padding-right: 20px;
+   }
 }
 
 .no-chara {

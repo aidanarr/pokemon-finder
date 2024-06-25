@@ -17,6 +17,10 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
+
+        @media (width < 480px) {
+            width: 300px;
+        }
         
     }
 

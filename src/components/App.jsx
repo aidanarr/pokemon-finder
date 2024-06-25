@@ -25,16 +25,10 @@ function App() {
   // pkm name and details url
   const [pkmList, setPkmList] = useState([]);
 
-  // useEffect(() => {
-  //   fetchPkmData(generation).then(!loader ? setLoader(true) : false).then((data) => {
-  //     setLoader(false);
-  //     setPkmList(data)});
-  // }, [generation])
-
   useEffect(() => {
     const localGen = localStorage.getItem("gen");
     localGen ? setGeneration(localGen) : false;
-    fetchPkmData(generation).then(!loader ? setLoader(true) : false).then((data) => {
+    fetchPkmData(localGen ? localGen : generation).then(!loader ? setLoader(true) : false).then((data) => {
       setLoader(false);
       setPkmList(data)});
   }, [generation])
