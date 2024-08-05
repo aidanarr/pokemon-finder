@@ -11,6 +11,7 @@ import FilterGen from "./FilterGen.jsx";
 import FilterType from "./FilterType.jsx";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
+import Error from "./Error.jsx";
 
 function App() {
 
@@ -19,7 +20,8 @@ function App() {
   const [noCharaMsg, setNoCharaMsg] = useState(null);
   const [valueInput, setValueInput] = useState("");
   const [valueType, setValueType] = useState("");
-  const [generation, setGeneration] = useState(1);
+  const [generation, setGeneration] = useState("1");
+  const [error, setError] = useState(false);
 
   // POKEMON
   // pkm name and details url
@@ -28,13 +30,18 @@ function App() {
   useEffect(() => {
     const localGen = localStorage.getItem("gen");
     localGen ? setGeneration(localGen) : false;
+    error ? setError(false) : false;
     fetchPkmData(localGen ? localGen : generation).then(!loader ? setLoader(true) : false).then((data) => {
       setLoader(false);
-      setPkmList(data)});
+      setPkmList(data);
+      data === "error" ? setError(true) : false
+    });
+
   }, [generation])
 
+
   // Array using pkmList applying filters
-  const filterPkm = pkmList.filter((pkm) => valueInput ? pkm.name.toLowerCase().includes(valueInput.toLowerCase()) : true).filter((pkm) => valueType ? pkm.types.includes(valueType) : true)
+  const filterPkm = pkmList === "error" ? false : pkmList.filter((pkm) => valueInput ? pkm.name.toLowerCase().includes(valueInput.toLowerCase()) : true).filter((pkm) => valueType ? pkm.types.includes(valueType) : true)
   
   const getPkmData = (parameter) => {
     // Get pkm that matches with pkmList to use in Detail component
@@ -42,6 +49,24 @@ function App() {
     return clickedPkm
   }
 
+  const renderHome = () => {
+    return <>
+        <form className="form">
+          <Filters valueInput={valueInput} setValueInput={setValueInput} setNoCharaMsg={setNoCharaMsg} />
+          <div className="form__select">
+            <FilterGen generation={generation} setGeneration={setGeneration} />
+            <FilterType pkmList={pkmList} valueType={valueType} setValueType={setValueType} />
+          </div>
+        </form>
+        <CharacterList loader={loader} pkmList={filterPkm}/>
+      </>
+  }
+
+  const renderErrorMsg = () => {
+    if (filterPkm !== "error") {
+      filterPkm.length === 0 ? <div className="no-chara"><p>{noCharaMsg}</p></div> : null
+    } else false
+  }
 
   return (
     <>
@@ -49,22 +74,13 @@ function App() {
     <main className="main">
       <Routes>
         <Route path="/" element={
-          <>
-            <form className="form">
-              <Filters valueInput={valueInput} setValueInput={setValueInput} setNoCharaMsg={setNoCharaMsg} />
-              <div className="form__select">
-                <FilterGen generation={generation} setGeneration={setGeneration} />
-                <FilterType pkmList={pkmList} valueType={valueType} setValueType={setValueType} />
-              </div>
-            </form>
-            <CharacterList loader={loader} pkmList={filterPkm}/>
-          </>
+          error ? <Error /> : renderHome()
         }/>
         <Route path="/detail/:id" element={<CharacterDetail loader={loader} getPkmData={getPkmData} />}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* Render error text */}
-      {filterPkm.length === 0 ? <div className="no-chara"><p>{noCharaMsg}</p></div> : null}
+      {renderErrorMsg()}
     </main>
     <Footer />
     </>

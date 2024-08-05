@@ -9,7 +9,7 @@ const FilterType = (props) => {
   }
 
  // get all pkm types from current list
-  const allTypes = props.pkmList.map((pkm) => {
+  const allTypes = props.pkmList === "error" ? false : props.pkmList.map((pkm) => {
     return pkm.types
   });
   const allTypesString = allTypes.toString().split(",");
@@ -21,7 +21,7 @@ const FilterType = (props) => {
   return (
      <label className="select type" htmlFor="species">type: 
         <select className="select__box" name="species" id="species" value={props.valueType} onChange={handleChange}>
-          <option value="">choose</option>
+          <option value="">all</option>
           {typesArray.map((type, i) => {
             return <option key={i} value={type}>{type}</option>
             })}

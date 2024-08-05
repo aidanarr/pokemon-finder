@@ -28,7 +28,7 @@ const FilterGen = (props) => {
 }
 
 FilterGen.propTypes = {
-  generation: PropTypes.number,
+  generation: PropTypes.string,
   setGeneration: PropTypes.func,
 };
 

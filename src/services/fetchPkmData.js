@@ -60,7 +60,10 @@ const fetchPkmData = (generation) => {
     
     return pkmArrayClean
 
-  }).catch(err => {console.error('Request failed', err)})
+  }).catch(err => {console.error('Request failed', err)
+    const data = "error";
+    return data;
+  })
 };
 
 export default fetchPkmData
