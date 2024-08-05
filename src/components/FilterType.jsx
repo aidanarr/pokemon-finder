@@ -16,8 +16,6 @@ const FilterType = (props) => {
  // remove duplicates
   const typesArray = allTypesString.filter((type, index) => { return allTypesString.indexOf(type) === index});
 
-  console.log(typesArray)
-
   return (
      <label className="select type" htmlFor="species">type: 
         <select className="select__box" name="species" id="species" value={props.valueType} onChange={handleChange}>
