@@ -4,8 +4,13 @@ import PropTypes from "prop-types";
 
 export const CharacterList = ({ pkmList, loader }) => {
 
+  //remove undefined elements
+  const pkmListCopy = pkmList.filter((element) => element !== undefined);
+
+  pkmListCopy.push()
+
   // sort by id (descending)
-  pkmList.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
+  pkmListCopy.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
 
   return (
     <>
@@ -13,7 +18,7 @@ export const CharacterList = ({ pkmList, loader }) => {
         <div className={`loader-list ${!loader ? "hidden" : ""}`}></div>
       </div>
       <section className="list-box">
-        {pkmList.map((chara) => <CharacterCard key={chara.id} chara={chara} />)}
+        {pkmListCopy.map((chara) => <CharacterCard key={chara.id} chara={chara} />)}
       </section>
     </>
   )
