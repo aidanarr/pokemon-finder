@@ -18,13 +18,13 @@ const fetchPkmData = (generation) => {
       console.log("primer fetch", pkmArray)
       // fetch pkm details using pkm id, use map to get an array of all pkm
       return Promise.all(pkmArray.map((pkm) => {
-        try {return fetch("https://pokeapi.co/api/v2/pokemon/" + pkm.id)
+        return fetch("https://pokeapi.co/api/v2/pokemon/" + pkm.id)
         .then((response) => response.json())
         .then((data) => {
-          console.log("segundo fetch", data)
+          console.log("segundo fetch", data.id)
           return data
         })
-    } catch(err){console.error('Request failed', err)}}));
+      }));
      
   }).then((data) =>  {    
     // another map to clean the fetched info
@@ -54,13 +54,12 @@ const fetchPkmData = (generation) => {
       types: types,
       weight: data.weight / 10,
       stats: stats,
-      pokedex: data.order
+      pokedex: data.id
     }
 
     return pkmInfo
     })
-    
-    console.log("array clean", pkmArrayClean)
+
     return pkmArrayClean
 
   }).catch(err => {console.error('Request failed', err)
