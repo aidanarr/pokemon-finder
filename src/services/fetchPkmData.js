@@ -9,25 +9,33 @@ const fetchPkmData = (generation) => {
         //the sixth element in that url is the pkm id
           const split = pkm.url.split("/");
           const pkmId = split[6];
-          console.log("pkm id", typeof pkmId)
+
           return {
             name: pkm.name,
             id: pkmId
           }
       });
-      console.log("primer fetch", pkmArray)
+      
       // fetch pkm details using pkm id, use map to get an array of all pkm
       return Promise.all(pkmArray.map((pkm) => {
         return fetch("https://pokeapi.co/api/v2/pokemon/" + pkm.id)
         .then((response) => response ? response.json() : false)
         .then((data) => {
-          console.log("segundo fetch", data.id)
+          if (!data) {
+            return {
+              name: pkm.name,
+              id: pkm.id,
+            }
+          } else {
+          
           return data
-        }).catch(err => {console.error('Req failed', err, pkm.id)});
+        }
+        }).catch(err => {console.error('Req failed', err)});
       }))
      
   }).then((data) =>  {    
     // another map to clean the fetched info
+    console.log("segundo fetch", data)
     const pkmArrayClean = data.map((data) => {
       try {
       const types = data.types.map((info) => {
@@ -59,7 +67,10 @@ const fetchPkmData = (generation) => {
     }
 
     return pkmInfo
-  } catch(err){return false}})
+  } catch(err){return {
+    name: data.name,
+    id: data.id,
+  }}})
 
     return pkmArrayClean
 
