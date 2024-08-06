@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export const CharacterList = ({ pkmList, loader }) => {
 
-  //remove undefined elements
+  //remove false elements
   const pkmListCopy = pkmList.filter(Boolean);
 
   // sort by id (descending)
