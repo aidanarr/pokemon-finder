@@ -23,12 +23,13 @@ const fetchPkmData = (generation) => {
         .then((data) => {
           console.log("segundo fetch", data.id)
           return data
-        }).catch(err => {console.error('Req failed', err)});
+        }).catch(err => {console.error('Req failed', err, pkm.id)});
       }))
      
   }).then((data) =>  {    
     // another map to clean the fetched info
     const pkmArrayClean = data.map((data) => {
+      try {
       const types = data.types.map((info) => {
         return info.type.name
       });
@@ -58,7 +59,7 @@ const fetchPkmData = (generation) => {
     }
 
     return pkmInfo
-    })
+  } catch(err){return false}})
 
     return pkmArrayClean
 
