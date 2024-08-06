@@ -19,12 +19,12 @@ const fetchPkmData = (generation) => {
       // fetch pkm details using pkm id, use map to get an array of all pkm
       return Promise.all(pkmArray.map((pkm) => {
         return fetch("https://pokeapi.co/api/v2/pokemon/" + pkm.id)
-        .then((response) => response.json())
+        .then((response) => response ? response.json() : false)
         .then((data) => {
           console.log("segundo fetch", data.id)
           return data
-        })
-      }));
+        }).catch(err => {console.error('Req failed', err)});
+      }))
      
   }).then((data) =>  {    
     // another map to clean the fetched info
