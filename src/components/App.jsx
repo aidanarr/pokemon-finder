@@ -15,12 +15,11 @@ import Error from "./Error.jsx";
 
 function App() {
 
-
   const [loader, setLoader] = useState(true);
   const [noCharaMsg, setNoCharaMsg] = useState(null);
   const [valueInput, setValueInput] = useState("");
   const [valueType, setValueType] = useState("");
-  const [generation, setGeneration] = useState("1");
+  const [generation, setGeneration] = useState("2");
   const [error, setError] = useState(false);
 
   // POKEMON
@@ -30,10 +29,10 @@ function App() {
   useEffect(() => {
     const localGen = localStorage.getItem("gen");
     localGen ? setGeneration(localGen) : false;
-    error ? setError(false) : false;
     fetchPkmData(localGen ? localGen : generation).then(!loader ? setLoader(true) : false).then((data) => {
       setLoader(false);
-      setPkmList(data);
+      setPkmList(data)
+      data !== "error" ? setError(false) : false;
       data === "error" ? setError(true) : false
     });
 
@@ -49,16 +48,29 @@ function App() {
     return clickedPkm
   }
 
+  // const renderHome = () => {
+  //   return <>
+  //       <form className="form">
+  //         <Filters valueInput={valueInput} setValueInput={setValueInput} setNoCharaMsg={setNoCharaMsg} />
+  //         <div className="form__select">
+  //           <FilterGen generation={generation} setGeneration={setGeneration} />
+  //           <FilterType pkmList={pkmList} valueType={valueType} setValueType={setValueType} />
+  //         </div>
+  //       </form>
+  //       <CharacterList loader={loader} pkmList={filterPkm}/>
+  //     </>
+  // }
+
   const renderHome = () => {
     return <>
         <form className="form">
           <Filters valueInput={valueInput} setValueInput={setValueInput} setNoCharaMsg={setNoCharaMsg} />
           <div className="form__select">
             <FilterGen generation={generation} setGeneration={setGeneration} />
-            <FilterType pkmList={pkmList} valueType={valueType} setValueType={setValueType} />
+            {error ? false : <FilterType pkmList={pkmList} valueType={valueType} setValueType={setValueType} />}
           </div>
         </form>
-        <CharacterList loader={loader} pkmList={filterPkm}/>
+        {error ? <Error /> : <CharacterList loader={loader} pkmList={filterPkm}/>}
       </>
   }
 
@@ -74,7 +86,7 @@ function App() {
     <main className="main">
       <Routes>
         <Route path="/" element={
-          error ? <Error /> : renderHome()
+          renderHome()
         }/>
         <Route path="/detail/:id" element={<CharacterDetail loader={loader} getPkmData={getPkmData} />}/>
         <Route path="*" element={<NotFound />} />
