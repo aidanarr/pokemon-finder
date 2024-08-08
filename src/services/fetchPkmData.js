@@ -20,7 +20,7 @@ const fetchPkmData = (generation) => {
         .then((response) => response ? response.json() : false)
         .then((data) => {
           return data
-        }).catch(err => {console.error('Request failed', pkm.name)});
+        }).catch(err => {console.error('Request failed: could not get details of', pkm.name)});
       }))
      
   }).then((data) =>  {    

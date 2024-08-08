@@ -14,7 +14,7 @@ export const CharacterDetail = ({getPkmData, loader}) => {
 
   const renderStatName = (data) => {
     const statList = data.map((stat, i) => {
-      return <p key={i}>{stat.stat}:</p>
+      return <p key={i}>{stat.stat.replaceAll("-", " ")}:</p>
     })
 
     return statList
@@ -44,7 +44,7 @@ export const CharacterDetail = ({getPkmData, loader}) => {
     {data ?  <>
         <div className="detail">
           <article className="detail__card">
-            <p className="card-name">{data.name}</p>
+            <p className="card-name">{data.name.replaceAll("-", " ")}</p>
             <p className="card-pokedex">Pokédex entry #{data.pokedex}</p>
             <div className="detail__card--sprites">
               <div>
@@ -66,9 +66,9 @@ export const CharacterDetail = ({getPkmData, loader}) => {
 
               <div className="info-values">
                 <p>{data.types[0]}{data.types[1] ? ", " + data.types[1] : false}</p>
-                <p>{data.abilities[0]}
-                  {data.abilities[1] ? ", " + data.abilities[1] : false}
-                  {data.abilities[2] ? ", " + data.abilities[2] : false}</p>
+                <p>{data.abilities[0].replaceAll("-", " ")}
+                  {data.abilities[1] ? ", " + data.abilities[1].replaceAll("-", " ") : false}
+                  {data.abilities[2] ? ", " + data.abilities[2].replaceAll("-", " ") : false}</p>
                 <p>{data.weight} kg</p>
               </div>
             </div>  

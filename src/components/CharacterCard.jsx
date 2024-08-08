@@ -9,7 +9,7 @@ export const CharacterCard = ({chara}) => {
     <Link to={`/detail/${chara.id}`} className="link">
       <article className="card">
         <img src={chara.image} />
-        <p className="card__name">{chara.name}</p>
+        <p className="card__name">{chara.name.replaceAll("-", " ")}</p>
       </article>
     </Link>
 

@@ -48,19 +48,6 @@ function App() {
     return clickedPkm
   }
 
-  // const renderHome = () => {
-  //   return <>
-  //       <form className="form">
-  //         <Filters valueInput={valueInput} setValueInput={setValueInput} setNoCharaMsg={setNoCharaMsg} />
-  //         <div className="form__select">
-  //           <FilterGen generation={generation} setGeneration={setGeneration} />
-  //           <FilterType pkmList={pkmList} valueType={valueType} setValueType={setValueType} />
-  //         </div>
-  //       </form>
-  //       <CharacterList loader={loader} pkmList={filterPkm}/>
-  //     </>
-  // }
-
   const renderHome = () => {
     return <>
         <form className="form">
